@@ -129,6 +129,7 @@ class Syncer:
 
     def run(self) -> None:
         self._load_stringtable()
+        print(f"STRINGTABLE.NAME {self.stringtable.name}")
         with TolgeeClient(base_url=f"{self.config.tolgee_config.base_url}/v2/projects", api_key=self.config.tolgee_config.get_tolgee_api_project_token(self.stringtable.name)) as tolgee_client:
             self.tolgee_project = proxy(tolgee_client.project, self._remove_tolgee_project)
             self._load_tolgee_project()
